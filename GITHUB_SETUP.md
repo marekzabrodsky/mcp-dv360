@@ -22,7 +22,7 @@ After creating the repository, GitHub will show you commands. Use these:
 
 ```bash
 # Add GitHub as remote origin
-git remote add origin https://github.com/YOUR_USERNAME/dv360-mcp-server.git
+git remote add origin https://github.com/marekzabrodsky/mcp-dv360.git
 
 # Verify the remote
 git remote -v
@@ -56,12 +56,12 @@ After the repository is live, update these references:
 
 **In README.md:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/dv360-mcp-server.git
+git clone https://github.com/marekzabrodsky/mcp-dv360.git
 ```
 
 **In INSTALL.md:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/dv360-mcp-server.git
+git clone https://github.com/marekzabrodsky/mcp-dv360.git
 ```
 
 Replace `YOUR_USERNAME` with your actual GitHub username.

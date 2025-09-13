@@ -14,8 +14,8 @@ Easy installation guide for the DV360 MCP Server - get AI access to your Display
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/dv360-mcp-server.git
-cd dv360-mcp-server
+git clone https://github.com/marekzabrodsky/mcp-dv360.git
+cd mcp-dv360
 ```
 
 ### 2. Install Dependencies
@@ -76,7 +76,7 @@ Add to your Claude Desktop configuration file:
     "dv360": {
       "command": "python3",
       "args": ["run_server.py"],
-      "cwd": "/full/path/to/dv360-mcp-server",
+      "cwd": "/full/path/to/mcp-dv360",
       "env": {
         "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/your/credentials.json"
       }
@@ -122,7 +122,7 @@ Once configured, test with these commands in Claude:
 - **Test independently:** `python3 test_server.py`
 - **Verify credentials:** `python3 final_verification.py`
 - **Check logs:** Claude Desktop shows error messages
-- **Issues:** [GitHub Issues](https://github.com/YOUR_USERNAME/dv360-mcp-server/issues)
+- **Issues:** [GitHub Issues](https://github.com/marekzabrodsky/mcp-dv360/issues)
 
 ## 🎉 You're Ready!
 

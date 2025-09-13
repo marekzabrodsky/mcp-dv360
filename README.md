@@ -50,8 +50,8 @@ A comprehensive Model Context Protocol (MCP) server that provides AI assistants 
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/dv360-mcp-server.git
-cd dv360-mcp-server
+git clone https://github.com/marekzabrodsky/mcp-dv360.git
+cd mcp-dv360
 
 # Install dependencies
 pip install -r requirements.txt

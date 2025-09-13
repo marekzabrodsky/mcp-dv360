@@ -14,8 +14,8 @@ Thank you for your interest in contributing to the DV360 MCP Server! This guide 
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/dv360-mcp-server.git
-cd dv360-mcp-server
+git clone https://github.com/marekzabrodsky/mcp-dv360.git
+cd mcp-dv360
 pip install -r requirements.txt
 ```
 
@@ -179,7 +179,7 @@ For new features, please include:
 
 ## 📞 Getting Help
 
-- **Issues:** [GitHub Issues](https://github.com/YOUR_USERNAME/dv360-mcp-server/issues)
+- **Issues:** [GitHub Issues](https://github.com/marekzabrodsky/mcp-dv360/issues)
 - **Discussions:** Use GitHub Discussions for questions
 - **Documentation:** Check existing docs first
 
