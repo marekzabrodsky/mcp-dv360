@@ -118,10 +118,10 @@ class BidManagerClient:
                 "dataRange": {
                     "range": date_range
                 },
-                "format": "JSON"
+                "format": "CSV"  # Changed to CSV format
             },
             "params": {
-                "type": "TYPE_GENERAL",
+                "type": "STANDARD",  # Changed to STANDARD type
                 "groupBys": ["FILTER_CAMPAIGN", "FILTER_LINE_ITEM"],
                 "filters": filters,
                 "metrics": metrics
@@ -223,10 +223,10 @@ class BidManagerClient:
                     "dataRange": {
                         "range": date_range
                     },
-                    "format": "JSON"
+                    "format": "CSV"  # Changed to CSV format
                 },
                 "params": {
-                    "type": "TYPE_GENERAL",
+                    "type": "STANDARD",  # Changed to STANDARD type
                     "groupBys": ["FILTER_LINE_ITEM", "FILTER_CREATIVE"],
                     "filters": filters,
                     "metrics": [
