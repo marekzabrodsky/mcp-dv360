@@ -8,6 +8,27 @@ A comprehensive Model Context Protocol (MCP) server that provides AI assistants 
 
 **🤖 Enable your AI assistant to manage DV360 campaigns through natural language!**
 
+## 🆕 Latest Update - Enhanced Features!
+
+**NEW in this release:**
+- ✨ **12 additional tools** - Now 17 total tools available
+- 📋 **Detailed insertion order info** with budget & settings
+- 💰 **Line item details** including bidding strategies  
+- 🎯 **Targeting configuration** access
+- 📈 **Performance statistics** with impressions, clicks, CTR
+- 🎨 **Creative management** and assignments
+- 👥 **Enhanced audience** segment handling
+- 📑 **Comprehensive reporting** capabilities
+
+**What you can now do:**
+```
+"Show me detailed budget info for insertion order 67890"
+"Get line item bidding strategy for 11111"  
+"What targeting options are set for line item 11111?"
+"Get performance stats for campaign 52866149 - impressions, clicks, CTR"
+"List all creatives for advertiser 1076318578"
+```
+
 ## 🚀 Features
 
 ### 📊 Comprehensive Data Access
@@ -17,7 +38,7 @@ A comprehensive Model Context Protocol (MCP) server that provides AI assistants 
 - **Audiences & Targeting** - Complete audience and targeting insights
 - **Performance Analytics** - Real-time reporting and metrics
 
-### 🛠️ 17 Powerful Tools
+### 🛠️ 17 Powerful Tools (Enhanced!)
 
 #### **Basic Account Management**
 - `list_advertisers` - Show all advertisers in your account
@@ -29,22 +50,22 @@ A comprehensive Model Context Protocol (MCP) server that provides AI assistants 
 - `search_campaigns` - Search campaigns by name
 - `get_campaign_details` - Detailed campaign information
 
-#### **Structural Navigation**
-- `list_insertion_orders` - Browse insertion orders
-- `get_insertion_order_details` - Detailed IO information
-- `list_line_items` - List line items with filtering
-- `get_line_item_details` - Complete line item data
-- `get_targeting_options` - View targeting configurations
+#### **Structural Navigation** 🔍
+- `list_insertion_orders` - Browse insertion orders for campaigns
+- `get_insertion_order_details` - **NEW!** Detailed IO info with budget & settings
+- `list_line_items_for_io` - **ENHANCED!** List line items with IO filtering  
+- `get_line_item_details` - **NEW!** Complete line item data with bidding strategy
+- `get_targeting_options` - **NEW!** View detailed targeting configurations
 
-#### **Creative & Audience Management**
-- `list_creatives` - Browse all creatives
-- `get_creative_details` - Detailed creative information  
-- `list_audiences` - View audience segments
-- `get_audience_details` - Complete audience data
+#### **Creative & Audience Management** 🎨
+- `list_creatives` - **NEW!** Browse all creatives for advertiser
+- `get_creative_details` - **NEW!** Detailed creative info & assignments
+- `list_audiences_for_advertiser` - **ENHANCED!** View audience segments  
+- `get_audience_details` - **NEW!** Complete audience data & targeting
 
-#### **Performance & Reporting**
-- `get_campaign_performance_summary` - Generate performance reports
-- `list_saved_reports` - Browse existing reports
+#### **Performance & Reporting** 📈
+- `get_campaign_performance_summary` - **NEW!** Get impressions, clicks, CTR & conversions
+- `list_saved_reports` - **NEW!** Browse existing reports & queries
 
 ## 🚀 Quick Start
 
@@ -172,20 +193,25 @@ Once connected, you can interact with DV360 through natural language:
 "List campaigns for advertiser 1076318578"
 "Search for campaigns containing 'Bourdon' in advertiser 1076318578"
 "Show me details for campaign 52866149"
+"Get performance summary for campaign 52866149 in last 30 days"
 ```
 
-### **Deep Dive Analysis**
+### **Deep Dive Analysis** 🔍
 ```
 "List insertion orders for advertiser 1076318578"
-"Show me line items for insertion order 12345" 
-"What targeting options are set for line item 67890?"
+"Show me detailed info for insertion order 67890 including budget"
+"List line items for insertion order 67890"
+"Get complete line item details with bidding strategy for 11111"
+"Show me targeting options for line item 11111"
 ```
 
-### **Creative & Audience Management**
+### **Creative & Audience Management** 🎨
 ```
 "List all creatives for advertiser 1076318578"
-"Show me audience segments for advertiser 1076318578"
 "Get details for creative 99999"
+"Show me audience segments for advertiser 1076318578"
+"Get details for audience 55555"
+"What saved reports are available?"
 ```
 
 ### **Performance Reporting**

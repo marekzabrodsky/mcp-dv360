@@ -203,6 +203,211 @@ class DV360MCPServer:
                         },
                         "required": ["advertiser_id", "audience_name", "audience_type"]
                     }
+                ),
+                # Enhanced Information Tools
+                Tool(
+                    name="get_insertion_order_details",
+                    description="Get detailed information about a specific insertion order including budget and settings",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "insertion_order_id": {
+                                "type": "string",
+                                "description": "The insertion order ID to get details for"
+                            }
+                        },
+                        "required": ["advertiser_id", "insertion_order_id"]
+                    }
+                ),
+                Tool(
+                    name="get_line_item_details",
+                    description="Get detailed information about a line item including budget, bidding strategy, and settings",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "line_item_id": {
+                                "type": "string",
+                                "description": "The line item ID to get details for"
+                            }
+                        },
+                        "required": ["advertiser_id", "line_item_id"]
+                    }
+                ),
+                Tool(
+                    name="get_targeting_options",
+                    description="Get targeting configuration for a specific line item",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "line_item_id": {
+                                "type": "string",
+                                "description": "The line item ID to get targeting for"
+                            }
+                        },
+                        "required": ["advertiser_id", "line_item_id"]
+                    }
+                ),
+                Tool(
+                    name="get_campaign_performance_summary",
+                    description="Get performance statistics for a campaign including impressions, clicks, CTR, conversions",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "campaign_id": {
+                                "type": "string",
+                                "description": "Campaign ID to get performance for"
+                            },
+                            "date_range": {
+                                "type": "string",
+                                "description": "Date range (LAST_7_DAYS, LAST_30_DAYS, LAST_90_DAYS, etc.)",
+                                "default": "LAST_30_DAYS"
+                            }
+                        },
+                        "required": ["advertiser_id", "campaign_id"]
+                    }
+                ),
+                Tool(
+                    name="list_insertion_orders",
+                    description="List insertion orders for an advertiser or specific campaign",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "campaign_id": {
+                                "type": "string",
+                                "description": "Optional: Filter by specific campaign ID"
+                            }
+                        },
+                        "required": ["advertiser_id"]
+                    }
+                ),
+                Tool(
+                    name="list_line_items_for_io",
+                    description="List line items for an advertiser or specific insertion order",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "insertion_order_id": {
+                                "type": "string",
+                                "description": "Optional: Filter by specific insertion order ID"
+                            }
+                        },
+                        "required": ["advertiser_id"]
+                    }
+                ),
+                Tool(
+                    name="list_creatives",
+                    description="List all creatives for an advertiser",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            }
+                        },
+                        "required": ["advertiser_id"]
+                    }
+                ),
+                Tool(
+                    name="get_creative_details",
+                    description="Get detailed information about a specific creative",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "creative_id": {
+                                "type": "string",
+                                "description": "The creative ID to get details for"
+                            }
+                        },
+                        "required": ["advertiser_id", "creative_id"]
+                    }
+                ),
+                Tool(
+                    name="list_audiences_for_advertiser",
+                    description="List audience segments for a specific advertiser",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            }
+                        },
+                        "required": ["advertiser_id"]
+                    }
+                ),
+                Tool(
+                    name="get_audience_details",
+                    description="Get detailed information about an audience segment",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "audience_id": {
+                                "type": "string",
+                                "description": "The audience ID to get details for"
+                            }
+                        },
+                        "required": ["advertiser_id", "audience_id"]
+                    }
+                ),
+                Tool(
+                    name="list_saved_reports",
+                    description="List all saved reports/queries",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "Optional: Filter by advertiser ID"
+                            }
+                        }
+                    }
+                ),
+                Tool(
+                    name="get_advertiser_summary",
+                    description="Get comprehensive summary of an advertiser with counts and recent activity",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID to get summary for"
+                            }
+                        },
+                        "required": ["advertiser_id"]
+                    }
                 )
             ]
         
@@ -235,6 +440,66 @@ class DV360MCPServer:
                         arguments["advertiser_id"],
                         arguments["audience_name"],
                         arguments["audience_type"]
+                    )
+                # Enhanced Information Tools
+                elif name == "get_insertion_order_details":
+                    result = await self.dv360_client.get_insertion_order_details(
+                        arguments["advertiser_id"],
+                        arguments["insertion_order_id"]
+                    )
+                elif name == "get_line_item_details":
+                    result = await self.dv360_client.get_line_item_details(
+                        arguments["advertiser_id"],
+                        arguments["line_item_id"]
+                    )
+                elif name == "get_targeting_options":
+                    result = await self.dv360_client.get_targeting_options(
+                        arguments["advertiser_id"],
+                        arguments["line_item_id"]
+                    )
+                elif name == "get_campaign_performance_summary":
+                    date_range = arguments.get("date_range", "LAST_30_DAYS")
+                    result = await self.dv360_client.get_campaign_performance_summary(
+                        arguments["advertiser_id"],
+                        arguments["campaign_id"],
+                        date_range
+                    )
+                elif name == "list_insertion_orders":
+                    campaign_id = arguments.get("campaign_id")
+                    result = await self.dv360_client.list_insertion_orders(
+                        arguments["advertiser_id"],
+                        campaign_id
+                    )
+                elif name == "list_line_items_for_io":
+                    insertion_order_id = arguments.get("insertion_order_id")
+                    result = await self.dv360_client.list_line_items_for_io(
+                        arguments["advertiser_id"],
+                        insertion_order_id
+                    )
+                elif name == "list_creatives":
+                    result = await self.dv360_client.list_creatives(
+                        arguments["advertiser_id"]
+                    )
+                elif name == "get_creative_details":
+                    result = await self.dv360_client.get_creative_details(
+                        arguments["advertiser_id"],
+                        arguments["creative_id"]
+                    )
+                elif name == "list_audiences_for_advertiser":
+                    result = await self.dv360_client.list_audiences_for_advertiser(
+                        arguments["advertiser_id"]
+                    )
+                elif name == "get_audience_details":
+                    result = await self.dv360_client.get_audience_details(
+                        arguments["advertiser_id"],
+                        arguments["audience_id"]
+                    )
+                elif name == "list_saved_reports":
+                    advertiser_id = arguments.get("advertiser_id")
+                    result = await self.dv360_client.list_saved_reports(advertiser_id)
+                elif name == "get_advertiser_summary":
+                    result = await self.dv360_client.get_advertiser_summary(
+                        arguments["advertiser_id"]
                     )
                 else:
                     raise ValueError(f"Unknown tool: {name}")
