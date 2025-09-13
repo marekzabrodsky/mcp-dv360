@@ -69,3 +69,12 @@ htmlcov/
 *.tmp
 *.temp
 *.bak
+
+# MCP Server specific
+mcp_config.json
+*_credentials.json
+oauth_token.json
+
+# Personal configuration files
+local_config.py
+my_*.py

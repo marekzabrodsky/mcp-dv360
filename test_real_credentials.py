@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 # Set credentials
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/marekzabrodsky/Downloads/ga-digitalad-53bb2ff0fdcd.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/path/to/your/credentials.json"
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))

@@ -1,6 +1,12 @@
 # DV360 MCP Server
 
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![MCP](https://img.shields.io/badge/MCP-Compatible-green.svg)](https://github.com/modelcontextprotocol)
+
 A comprehensive Model Context Protocol (MCP) server that provides AI assistants with full programmatic access to Google Display & Video 360 (DV360) advertising platform. Built with Claude Code for the community.
+
+**🤖 Enable your AI assistant to manage DV360 campaigns through natural language!**
 
 ## 🚀 Features
 
@@ -40,12 +46,32 @@ A comprehensive Model Context Protocol (MCP) server that provides AI assistants 
 - `get_campaign_performance_summary` - Generate performance reports
 - `list_saved_reports` - Browse existing reports
 
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/dv360-mcp-server.git
+cd dv360-mcp-server
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set up credentials (see INSTALL.md for details)
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/credentials.json"
+
+# Test the installation
+python3 final_verification.py
+```
+
+**[📖 Full Installation Guide](INSTALL.md)** | **[🔧 Setup Help](SETUP_COMPLETE.md)**
+
 ## Installation
 
 ### Prerequisites
 - Python 3.10 or higher
 - Google Cloud Platform account with DV360 API access
 - Either Service Account credentials or OAuth 2.0 credentials
+- Claude Desktop application
 
 ### Setup
 
