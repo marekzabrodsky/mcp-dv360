@@ -8,25 +8,29 @@ A comprehensive Model Context Protocol (MCP) server that provides AI assistants 
 
 **🤖 Enable your AI assistant to manage DV360 campaigns through natural language!**
 
-## 🆕 Latest Update - Enhanced Features!
+## 🆕 Latest Update - REAL Performance Metrics!
 
-**NEW in this release:**
-- ✨ **12 additional tools** - Now 17 total tools available
+**🎯 BREAKTHROUGH: Real Performance Data Access!**
+- ⚡ **Bid Manager API v2 integration** - Access to REAL performance data
+- 📊 **Actual impressions, clicks, CTR** - No more placeholder data
+- 💰 **Real spend and revenue** metrics
+- 🎯 **Custom performance reports** with any metrics
+- 📈 **8 new performance tools** - Now 25 total tools!
+
+**Previous enhancements also included:**
+- ✨ **12 additional tools** for detailed DV360 management  
 - 📋 **Detailed insertion order info** with budget & settings
-- 💰 **Line item details** including bidding strategies  
+- 💰 **Line item details** including bidding strategies
 - 🎯 **Targeting configuration** access
-- 📈 **Performance statistics** with impressions, clicks, CTR
 - 🎨 **Creative management** and assignments
-- 👥 **Enhanced audience** segment handling
-- 📑 **Comprehensive reporting** capabilities
 
-**What you can now do:**
+**🔥 What you can now do with REAL data:**
 ```
-"Show me detailed budget info for insertion order 67890"
-"Get line item bidding strategy for 11111"  
-"What targeting options are set for line item 11111?"
-"Get performance stats for campaign 52866149 - impressions, clicks, CTR"
-"List all creatives for advertiser 1076318578"
+"Get REAL impressions and clicks for campaign 52866149"
+"Show me actual CTR for line item 11111 in last 30 days"
+"What are the real conversion numbers for advertiser 1076318578?"
+"Create custom performance report with actual spend data"
+"Get real revenue metrics for my campaigns"
 ```
 
 ## 🚀 Features
@@ -38,7 +42,7 @@ A comprehensive Model Context Protocol (MCP) server that provides AI assistants 
 - **Audiences & Targeting** - Complete audience and targeting insights
 - **Performance Analytics** - Real-time reporting and metrics
 
-### 🛠️ 17 Powerful Tools (Enhanced!)
+### 🛠️ 25 Powerful Tools (with REAL Performance Metrics!)
 
 #### **Basic Account Management**
 - `list_advertisers` - Show all advertisers in your account
@@ -66,6 +70,16 @@ A comprehensive Model Context Protocol (MCP) server that provides AI assistants 
 #### **Performance & Reporting** 📈
 - `get_campaign_performance_summary` - **NEW!** Get impressions, clicks, CTR & conversions
 - `list_saved_reports` - **NEW!** Browse existing reports & queries
+
+#### **🎯 REAL Performance Metrics (Bid Manager API v2)** ⚡
+- `get_real_campaign_performance` - **REAL DATA!** Actual impressions, clicks, CTR
+- `get_real_advertiser_performance` - **REAL DATA!** Complete advertiser metrics  
+- `get_real_line_item_performance` - **REAL DATA!** Line item performance stats
+- `create_custom_performance_report` - **NEW!** Custom reports with real metrics
+- `get_performance_report_data` - **NEW!** Download report data
+- `list_performance_queries` - **NEW!** Browse existing performance reports
+- `get_available_performance_metrics` - **NEW!** List all available metrics
+- `get_available_date_ranges` - **NEW!** List all date range options
 
 ## 🚀 Quick Start
 
@@ -212,6 +226,17 @@ Once connected, you can interact with DV360 through natural language:
 "Show me audience segments for advertiser 1076318578"
 "Get details for audience 55555"
 "What saved reports are available?"
+```
+
+### **🎯 REAL Performance Analysis** ⚡
+```
+"Get REAL impressions and clicks for campaign 52866149"
+"Show me actual CTR for line item 11111 in last 30 days"
+"What are real conversion numbers for advertiser 1076318578?"
+"Get actual spend and revenue for my campaigns"
+"Create custom performance report with specific metrics"
+"What performance metrics are available?"
+"Download report data for query 987654321"
 ```
 
 ### **Performance Reporting**

@@ -13,6 +13,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from .config import Config
+from .bid_manager_client import BidManagerClient
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +24,8 @@ class DV360Client:
         self.config = config
         self.service = None
         self.executor = ThreadPoolExecutor(max_workers=4)
+        # Initialize Bid Manager client for performance metrics
+        self.bid_manager = BidManagerClient(config)
     
     async def _get_service(self):
         """Get authenticated DV360 service client."""
@@ -538,3 +541,51 @@ class DV360Client:
             }
         except Exception as e:
             return {'error': str(e)}
+    
+    # ===== REAL PERFORMANCE METRICS (BID MANAGER API) =====
+    
+    async def get_real_campaign_performance(self, advertiser_id: str, campaign_id: str, 
+                                          date_range: str = "LAST_30_DAYS") -> Dict[str, Any]:
+        """Get REAL performance metrics with actual impressions, clicks, CTR from Bid Manager API."""
+        return await self.bid_manager.get_campaign_performance_metrics(
+            advertiser_id, campaign_id, date_range
+        )
+    
+    async def get_real_advertiser_performance(self, advertiser_id: str, 
+                                            date_range: str = "LAST_30_DAYS") -> Dict[str, Any]:
+        """Get REAL performance summary for entire advertiser with actual metrics."""
+        return await self.bid_manager.get_advertiser_performance_summary(advertiser_id, date_range)
+    
+    async def get_real_line_item_performance(self, advertiser_id: str, line_item_id: str,
+                                           date_range: str = "LAST_30_DAYS") -> Dict[str, Any]:
+        """Get REAL performance metrics for a specific line item."""
+        return await self.bid_manager.get_line_item_performance(advertiser_id, line_item_id, date_range)
+    
+    async def create_custom_performance_report(self, advertiser_id: str, 
+                                             campaign_id: Optional[str] = None,
+                                             line_item_id: Optional[str] = None,
+                                             date_range: str = "LAST_30_DAYS",
+                                             metrics: Optional[List[str]] = None) -> Dict[str, Any]:
+        """Create a custom performance report with specified metrics."""
+        return await self.bid_manager.create_performance_query(
+            advertiser_id=advertiser_id,
+            campaign_id=campaign_id, 
+            date_range=date_range,
+            metrics=metrics
+        )
+    
+    async def get_performance_report_data(self, query_id: str) -> Dict[str, Any]:
+        """Get data from a performance report query."""
+        return await self.bid_manager.get_report_data(query_id)
+    
+    async def list_performance_queries(self) -> List[Dict[str, Any]]:
+        """List existing performance queries."""
+        return await self.bid_manager.list_queries()
+    
+    async def get_available_performance_metrics(self) -> List[Dict[str, str]]:
+        """Get list of all available performance metrics."""
+        return self.bid_manager.get_available_metrics()
+    
+    async def get_available_date_ranges(self) -> List[str]:
+        """Get list of all available date ranges for reports."""
+        return self.bid_manager.get_available_date_ranges()

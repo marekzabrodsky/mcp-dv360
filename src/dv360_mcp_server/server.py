@@ -408,6 +408,142 @@ class DV360MCPServer:
                         },
                         "required": ["advertiser_id"]
                     }
+                ),
+                # REAL PERFORMANCE METRICS TOOLS
+                Tool(
+                    name="get_real_campaign_performance",
+                    description="Get REAL performance metrics with actual impressions, clicks, CTR using Bid Manager API",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "campaign_id": {
+                                "type": "string",
+                                "description": "Campaign ID to get real performance for"
+                            },
+                            "date_range": {
+                                "type": "string",
+                                "description": "Date range (LAST_7_DAYS, LAST_30_DAYS, LAST_90_DAYS, etc.)",
+                                "default": "LAST_30_DAYS"
+                            }
+                        },
+                        "required": ["advertiser_id", "campaign_id"]
+                    }
+                ),
+                Tool(
+                    name="get_real_advertiser_performance",
+                    description="Get REAL performance summary for entire advertiser with actual metrics",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "date_range": {
+                                "type": "string",
+                                "description": "Date range (LAST_7_DAYS, LAST_30_DAYS, LAST_90_DAYS, etc.)",
+                                "default": "LAST_30_DAYS"
+                            }
+                        },
+                        "required": ["advertiser_id"]
+                    }
+                ),
+                Tool(
+                    name="get_real_line_item_performance",
+                    description="Get REAL performance metrics for a specific line item with actual data",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "line_item_id": {
+                                "type": "string",
+                                "description": "Line item ID to get real performance for"
+                            },
+                            "date_range": {
+                                "type": "string",
+                                "description": "Date range (LAST_7_DAYS, LAST_30_DAYS, LAST_90_DAYS, etc.)",
+                                "default": "LAST_30_DAYS"
+                            }
+                        },
+                        "required": ["advertiser_id", "line_item_id"]
+                    }
+                ),
+                Tool(
+                    name="create_custom_performance_report",
+                    description="Create a custom performance report with specified metrics using Bid Manager API",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "advertiser_id": {
+                                "type": "string",
+                                "description": "The advertiser ID"
+                            },
+                            "campaign_id": {
+                                "type": "string",
+                                "description": "Optional: Campaign ID to filter by"
+                            },
+                            "line_item_id": {
+                                "type": "string",
+                                "description": "Optional: Line item ID to filter by"
+                            },
+                            "date_range": {
+                                "type": "string",
+                                "description": "Date range (LAST_7_DAYS, LAST_30_DAYS, etc.)",
+                                "default": "LAST_30_DAYS"
+                            },
+                            "metrics": {
+                                "type": "array",
+                                "items": {"type": "string"},
+                                "description": "Optional: Specific metrics to include (e.g., METRIC_IMPRESSIONS, METRIC_CLICKS, METRIC_CTR)"
+                            }
+                        },
+                        "required": ["advertiser_id"]
+                    }
+                ),
+                Tool(
+                    name="get_performance_report_data",
+                    description="Get data from a performance report query",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "query_id": {
+                                "type": "string",
+                                "description": "The query ID to get report data from"
+                            }
+                        },
+                        "required": ["query_id"]
+                    }
+                ),
+                Tool(
+                    name="list_performance_queries",
+                    description="List existing performance queries/reports",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {}
+                    }
+                ),
+                Tool(
+                    name="get_available_performance_metrics",
+                    description="Get list of all available performance metrics (impressions, clicks, CTR, etc.)",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {}
+                    }
+                ),
+                Tool(
+                    name="get_available_date_ranges",
+                    description="Get list of all available date ranges for reports",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {}
+                    }
                 )
             ]
         
@@ -501,6 +637,49 @@ class DV360MCPServer:
                     result = await self.dv360_client.get_advertiser_summary(
                         arguments["advertiser_id"]
                     )
+                # REAL PERFORMANCE METRICS HANDLERS
+                elif name == "get_real_campaign_performance":
+                    date_range = arguments.get("date_range", "LAST_30_DAYS")
+                    result = await self.dv360_client.get_real_campaign_performance(
+                        arguments["advertiser_id"],
+                        arguments["campaign_id"],
+                        date_range
+                    )
+                elif name == "get_real_advertiser_performance":
+                    date_range = arguments.get("date_range", "LAST_30_DAYS")
+                    result = await self.dv360_client.get_real_advertiser_performance(
+                        arguments["advertiser_id"],
+                        date_range
+                    )
+                elif name == "get_real_line_item_performance":
+                    date_range = arguments.get("date_range", "LAST_30_DAYS")
+                    result = await self.dv360_client.get_real_line_item_performance(
+                        arguments["advertiser_id"],
+                        arguments["line_item_id"],
+                        date_range
+                    )
+                elif name == "create_custom_performance_report":
+                    campaign_id = arguments.get("campaign_id")
+                    line_item_id = arguments.get("line_item_id")
+                    date_range = arguments.get("date_range", "LAST_30_DAYS")
+                    metrics = arguments.get("metrics")
+                    result = await self.dv360_client.create_custom_performance_report(
+                        arguments["advertiser_id"],
+                        campaign_id,
+                        line_item_id,
+                        date_range,
+                        metrics
+                    )
+                elif name == "get_performance_report_data":
+                    result = await self.dv360_client.get_performance_report_data(
+                        arguments["query_id"]
+                    )
+                elif name == "list_performance_queries":
+                    result = await self.dv360_client.list_performance_queries()
+                elif name == "get_available_performance_metrics":
+                    result = await self.dv360_client.get_available_performance_metrics()
+                elif name == "get_available_date_ranges":
+                    result = await self.dv360_client.get_available_date_ranges()
                 else:
                     raise ValueError(f"Unknown tool: {name}")
                 
